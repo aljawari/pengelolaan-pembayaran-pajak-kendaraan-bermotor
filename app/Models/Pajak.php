@@ -11,15 +11,18 @@ class Pajak extends Model
 
     protected $table = 'pajaks';
 
-    protected $fillable = ['nama_pemilik', 'nomor_polisi', 'jenis_kendaraan', 'tahun', 'jumlah_pajak'];
+    protected $fillable = [
+        'nama_pemilik', 
+        'nomor_polisi', 
+        'jenis_kendaraan', 
+        'tahun', 
+        'jumlah_pajak',
+        'kendaraan_id',
+    ];
 
-    public static function getAll()
+    // Relasi one-to-many: satu pajak bisa memiliki banyak kendaraan
+    public function kendaraan()
     {
-        return Pajak::all();
-    }
-
-    public static function find($id)
-    {
-        return Pajak::where('id', $id)->first();
+    return $this->belongsTo(Kendaraan::class, 'kendaraan_id', 'id_kendaraan');
     }
 }

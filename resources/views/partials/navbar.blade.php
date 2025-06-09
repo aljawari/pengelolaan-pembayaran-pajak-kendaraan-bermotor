@@ -1,9 +1,9 @@
 <!-- [ Header Topbar ] start -->
 <header class="pc-header">
   <div class="header-wrapper flex max-sm:px-[15px] px-[25px] grow">
-    <!-- Sidebar Toggle -->
+    <!-- Sidebar Toggle & Menu -->
     <div class="me-auto pc-mob-drp">
-      <ul class="inline-flex *:min-h-header-height *:inline-flex *:items-center">
+      <ul class="inline-flex *:min-h-header-height *:inline-flex *:items-center gap-3">
         <li class="pc-h-item pc-sidebar-collapse max-lg:hidden lg:inline-flex">
           <a href="#" class="pc-head-link" id="sidebar-hide">
             <i data-feather="menu"></i>
@@ -14,21 +14,25 @@
             <i data-feather="menu"></i>
           </a>
         </li>
-        <!-- Search -->
-        <li class="dropdown pc-h-item">
-          <a class="pc-head-link dropdown-toggle" data-pc-toggle="dropdown" href="#">
-            <i data-feather="search"></i>
-          </a>
-          <div class="dropdown-menu pc-h-dropdown drp-search">
-            <form method="GET" action="{{ route('pajak.index') }}" class="px-2 py-1">
-              <input type="search" name="search" class="form-control !border-0 !shadow-none" placeholder="Cari data pajak..." />
-            </form>
-          </div>
+        <li class="pc-h-item">
+          <a href="{{ url('/') }}" class="pc-head-link">Dashboard</a>
+        </li>
+        <li class="pc-h-item">
+          <a href="{{ route('pajak.index') }}" class="pc-head-link">Pajak</a>
+        </li>
+        <li class="pc-h-item">
+          <a href="{{ route('pembayaran.index') }}" class="pc-head-link">Pembayaran</a>
+        </li>
+        <li class="pc-h-item">
+          <a href="#" class="pc-head-link text-muted" style="pointer-events: none;">Kendaraan</a>
+        </li>
+        <li class="pc-h-item">
+          <a href="#" class="pc-head-link text-muted" style="pointer-events: none;">Staff/Admin</a>
         </li>
       </ul>
     </div>
 
-    <!-- User Menu -->
+    <!-- User Profile -->
     <div class="ms-auto">
       <ul class="inline-flex *:min-h-header-height *:inline-flex *:items-center">
         <li class="dropdown pc-h-item header-user-profile">
@@ -39,11 +43,11 @@
             <div class="dropdown-header flex items-center justify-between py-4 px-5 bg-primary-500">
               <div class="flex mb-1 items-center">
                 <div class="shrink-0">
-                  <img src="{{ asset('assets/images/user/avatar-2.jpg') }}" alt="user-image" class="w-10 rounded-full" />
+                  <img src="{{ asset('dist/assets/images/user/avatar-1.jpg') }}" alt="user-image" class="w-10 rounded-full" />
                 </div>
                 <div class="grow ms-3 text-white">
-                  <h6 class="mb-1">#</h6>
-                  <span>#</span>
+                  <h6 class="mb-1">Admin User</h6>
+                  <span>Administrator</span>
                 </div>
               </div>
             </div>

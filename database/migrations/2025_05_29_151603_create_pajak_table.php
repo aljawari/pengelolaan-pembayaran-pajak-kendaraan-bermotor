@@ -1,6 +1,5 @@
 <?php
 
-use Database\Seeders\PajakSeeder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,27 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pajaks', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_pemilik');
-            $table->string('nomor_polisi');
-            $table->enum('jenis_kendaraan', ['Mobil', 'Motor']);
-            $table->integer('tahun');
-            $table->integer('jumlah_pajak');
-            $table->timestamps();
-        });
+        $table->id();
+        $table->string('nama_pemilik');
+        $table->string('nomor_polisi');
+        $table->enum('jenis_kendaraan', ['Mobil', 'Motor']);
+        $table->integer('tahun');
+        $table->decimal('jumlah_pajak', 15, 2);
+        $table->string('kendaraan_id'); // foreign key
+        $table->timestamps();
 
-        $this->callSeeder();
+        $table->foreign('kendaraan_id')->references('id_kendaraan')->on('kendaraans')->onDelete('cascade');
+        });
     }
-    private function callSeeder(): void
-    {
-        // jalankan seeder secara manual
-        (new PajakSeeder)->run();
-    }
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('pajak');
+        Schema::dropIfExists('pajaks');
     }
 };

@@ -1,7 +1,5 @@
-<!-- [ Sidebar Menu ] start -->
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
-        
         <div class="navbar-content">
             <div class="card pc-user-card">
                 <div class="card-body">
@@ -14,8 +12,8 @@
                                 <a href="#" class="arrow-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,20">
                                     <div class="d-flex align-items-center">
                                         <div class="flex-grow-1 me-2">
-                                            <h6 class="mb-0">Admin User</h6>
-                                            <small>Administrator</small>
+                                            <h6 class="mb-0">{{ Auth::user()->nama ?? 'Admin User' }}</h6>
+                                            <small>{{ Auth::user()->jabatan ?? 'Administrator' }}</small>
                                         </div>
                                         <div class="flex-shrink-0">
                                             <div class="btn btn-icon btn-link-secondary avtar">
@@ -26,14 +24,12 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a class="pc-user-links" href="#"><i class="ph-duotone ph-user"></i><span>My Account</span></a></li>
-                                        <li><a class="pc-user-links" href="#"><i class="ph-duotone ph-gear"></i><span>Settings</span></a></li>
-                                        <li><a class="pc-user-links" href="#"><i class="ph-duotone ph-lock-key"></i><span>Lock Screen</span></a></li>
                                         <li>
-                                            <form method="POST" action="#">
+                                            <form method="POST" action="{{ route('logout') }}">
                                                 @csrf
                                                 <button type="submit" class="pc-user-links w-100 text-start border-0 bg-transparent">
-                                                    <i class="ph-duotone ph-power"></i><span>Logout</span>
+                                                    <i class="ph-duotone ph-power"></i>
+                                                    <span>Logout</span>
                                                 </button>
                                             </form>
                                         </li>
@@ -51,46 +47,52 @@
                 </li>
                 <li class="pc-item">
                     <a href="{{ url('/') }}" class="pc-link">
-                        <span class="pc-micon">
-                            <i class="ph-duotone ph-gauge"></i>
-                        </span>
+                        <span class="pc-micon"><i class="ph-duotone ph-gauge"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
+
                 <li class="pc-item pc-caption">
                     <label>Data Management</label>
-                    <i class="ph-duotone ph-chart-pie"></i>
                 </li>
                 <li class="pc-item">
                     <a href="{{ route('pajak.index') }}" class="pc-link">
-                        <span class="pc-micon">
-                            <i class="ph-duotone ph-file-text"></i>
-                        </span>
-                        <span class="pc-mtext">Data Pajak</span>
+                        <span class="pc-micon"><i class="ph-duotone ph-file-text"></i></span>
+                        <span class="pc-mtext">Pajak</span>
                     </a>
                 </li>
                 <li class="pc-item">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon">
-                            <i class="ph-duotone ph-users"></i>
-                        </span>
-                        <span class="pc-mtext">Pengguna</span>
+                    <a href="{{ route('pembayaran.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ph-duotone ph-credit-card"></i></span>
+                        <span class="pc-mtext">Pembayaran</span>
                     </a>
                 </li>
+                <li class="pc-item">
+                    <a href="{{ route('kendaraan.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ph-duotone ph-credit-card"></i></span>
+                        <span class="pc-mtext">Kendaraan</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="{{ route('staff.index') }}" class="pc-link">
+                        <span class="pc-micon"><i class="ph-duotone ph-users-three"></i></span>
+                        <span class="pc-mtext">Staff/Admin</span>
+                    </a>
+                </li>
+
                 <li class="pc-item pc-caption">
                     <label>System</label>
-                    <i class="ph-duotone ph-gear-six"></i>
                 </li>
                 <li class="pc-item">
-                    <a href="#" class="pc-link">
-                        <span class="pc-micon">
-                            <i class="ph-duotone ph-gear"></i>
-                        </span>
-                        <span class="pc-mtext">Pengaturan</span>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}" class="w-100">
+                        @csrf
+                        <button type="submit" class="pc-link w-100 text-start border-0 bg-transparent">
+                            <span class="pc-micon"><i class="ph-duotone ph-power"></i></span>
+                            <span class="pc-mtext">Logout</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<!-- [ Sidebar Menu ] end -->
