@@ -6,7 +6,8 @@ use App\Http\Controllers\PajakController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\StaffController;
-
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\DashboardController;
 /**
  * ✅ ROUTE LOGIN (bebas dari middleware auth)
  */
@@ -18,8 +19,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
  * ✅ ROUTE YANG HANYA UNTUK USER LOGIN
  */
 Route::middleware(['auth'])->group(function () {
-     Route::get('/', [PajakController::class, 'index']);
-
+    Route::get('/', [PajakController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+   
     Route::resource('pajak', PajakController::class);
     Route::resource('kendaraan', KendaraanController::class);
     Route::resource('staff', StaffController::class);
@@ -31,5 +33,11 @@ Route::middleware(['auth'])->group(function () {
 
     // ✅ index & show tetap bisa diakses semua yang login
     Route::resource('pembayaran', PembayaranController::class)->only(['index', 'show']);
+
+    Route::get('/upload', [ImageController::class, 'create']);
+    Route::post('/upload', [ImageController::class, 'store'])->name('image.upload');
+    Route::delete('/upload/{id}', [ImageController::class, 'destroy'])->name('image.delete'); // untuk delete
+
 });
+
 

@@ -1,6 +1,7 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
         <div class="navbar-content">
+            <!-- User Card -->
             <div class="card pc-user-card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -41,45 +42,54 @@
                 </div>
             </div>
 
+            <!-- Navigation Menu -->
             <ul class="pc-navbar">
+
+                <!-- Navigation Section -->
                 <li class="pc-item pc-caption">
                     <label>Navigation</label>
                 </li>
-                <li class="pc-item">
-                    <a href="{{ url('/') }}" class="pc-link">
+                <li class="pc-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}" class="pc-link">
                         <span class="pc-micon"><i class="ph-duotone ph-gauge"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
 
+                <!-- Data Management Section -->
                 <li class="pc-item pc-caption">
                     <label>Data Management</label>
                 </li>
-                <li class="pc-item">
+
+                <li class="pc-item {{ request()->routeIs('pajak.*') ? 'active' : '' }}">
                     <a href="{{ route('pajak.index') }}" class="pc-link">
                         <span class="pc-micon"><i class="ph-duotone ph-file-text"></i></span>
                         <span class="pc-mtext">Pajak</span>
                     </a>
                 </li>
-                <li class="pc-item">
+
+                <li class="pc-item {{ request()->routeIs('pembayaran.*') ? 'active' : '' }}">
                     <a href="{{ route('pembayaran.index') }}" class="pc-link">
                         <span class="pc-micon"><i class="ph-duotone ph-credit-card"></i></span>
                         <span class="pc-mtext">Pembayaran</span>
                     </a>
                 </li>
-                <li class="pc-item">
+
+                <li class="pc-item {{ request()->routeIs('kendaraan.*') ? 'active' : '' }}">
                     <a href="{{ route('kendaraan.index') }}" class="pc-link">
-                        <span class="pc-micon"><i class="ph-duotone ph-credit-card"></i></span>
+                        <span class="pc-micon"><i class="ph-duotone ph-truck"></i></span>
                         <span class="pc-mtext">Kendaraan</span>
                     </a>
                 </li>
-                <li class="pc-item">
+
+                <li class="pc-item {{ request()->routeIs('staff.*') ? 'active' : '' }}">
                     <a href="{{ route('staff.index') }}" class="pc-link">
                         <span class="pc-micon"><i class="ph-duotone ph-users-three"></i></span>
                         <span class="pc-mtext">Staff/Admin</span>
                     </a>
                 </li>
 
+                <!-- System Section -->
                 <li class="pc-item pc-caption">
                     <label>System</label>
                 </li>

@@ -3,6 +3,15 @@
 @section('content')
 <div class="container">
     <h2>Tambah Data Pajak</h2>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
     <form action="{{ route('pajak.store') }}" method="POST">
     @csrf
 
