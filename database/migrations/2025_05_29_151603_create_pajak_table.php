@@ -18,7 +18,7 @@ return new class extends Migration
         $table->enum('jenis_kendaraan', ['Mobil', 'Motor']);
         $table->integer('tahun');
         $table->decimal('jumlah_pajak', 15, 2);
-        $table->string('kendaraan_id'); // foreign key
+        $table->string('kendaraan_id'); 
         $table->timestamps();
 
         $table->foreign('kendaraan_id')->references('id_kendaraan')->on('kendaraans')->onDelete('cascade');
